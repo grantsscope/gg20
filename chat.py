@@ -17,7 +17,7 @@ from langchain.agents.openai_functions_agent.agent_token_buffer_memory import (
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import SystemMessage, AIMessage, HumanMessage
 from langchain.prompts import MessagesPlaceholder
-from langsmith import Client
+
 from langchain.agents.agent_types import AgentType
 from langchain.tools import Tool, tool
 from trubrics.integrations.streamlit import FeedbackCollector
@@ -30,8 +30,6 @@ collector = FeedbackCollector(
     password="aeiour00",
 )
 
-
-client = Client()
 st.set_page_config(
     page_title="GrantsScope",
     page_icon="🔎",
