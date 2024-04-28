@@ -69,7 +69,7 @@ with col1:
 def configure_retriever():
     index = './storage/faiss_index'
     embeddings = OpenAIEmbeddings()    
-    vectorstore = FAISS.load_local(index, embeddings)
+    vectorstore = FAISS.load_local(index, embeddings,allow_dangerous_deserialization= True )
     return vectorstore.as_retriever()
 
 discoverer = create_retriever_tool(
@@ -80,7 +80,7 @@ discoverer = create_retriever_tool(
 
 tools = [discoverer]
 
-llm = ChatOpenAI(temperature=0, streaming=True, model="gpt-3.5-turbo-16k")
+llm = ChatOpenAI(temperature=0, streaming=True, model="gpt-4-turbo")
 #memory = AgentTokenBufferMemory(llm=llm)
 
 message = SystemMessage(
