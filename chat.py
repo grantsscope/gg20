@@ -53,9 +53,8 @@ st.sidebar.markdown("- [Gitcoin Grants Portal for Donors](https://grants-portal.
 st.sidebar.markdown("- About [GrantsScope](http://grantsscope.xyz/)")
 
 st.title('GrantsScope - GG20')
-st.markdown('Ask away your questions to learn more about the grantees in GG20.')    
-st.markdown('Here are a few sample questions to start your discovery')
-st.markdown('*- What are some of the top categories of impact in climate round?*')
+st.markdown('Ask away your questions to learn more about the grantees in GG20. Here are a few sample questions to start your discovery:')
+st.markdown('*- Give me examples of real-world impact for grantees in climate round.*')
 st.markdown('*- I am interested in knowing about grantees working in <add a category you are interested in>.*')
 st.markdown('*- ELI5 the project <project name> to me.*')
 st.markdown('*- Why should I donate to <add a project name>?*')
