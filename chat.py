@@ -84,10 +84,6 @@ llm = ChatOpenAI(temperature=0, streaming=True, model="gpt-4-turbo")
 
 message = SystemMessage(
     content=(
-        "Do not respond to questions that ask to sort or rank grantees. Do not respond to questions that ask to compare grantees. \
-        Few examples of such questions are \
-        (a) Rank the grantees by impact (b) Compare work of one grantee versus another? \
-        For such questions, do not share any grantee information and just say: ""Dear human, I am told not to influence you with my biases for such queries. The burden of choosing the public greats and saving the future of your kind lies on you. Choose well!""" \
         "Only use the context provided to respond to the question. Do not use information outside the context. Do not use any external information to respond."
         "Do not use round number in your response, only use round name"
         "If the answer is not available in the context information given above, respond: Sorry! I don't have an answer for this."
