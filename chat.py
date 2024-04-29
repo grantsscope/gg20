@@ -103,12 +103,12 @@ message = SystemMessage(
     )
 )
 
-prompt = OpenAIFunctionsAgent.create_prompt(
+agent_prompt_config = OpenAIFunctionsAgent.create_prompt(
     system_message=message,
     extra_prompt_messages=[MessagesPlaceholder(variable_name="history")],
 )
 
-agent = OpenAIFunctionsAgent(llm=llm, tools=tools, prompt=prompt, )
+agent = OpenAIFunctionsAgent(llm=llm, tools=tools, prompt=agent_prompt_config, )
 
 agent_executor = AgentExecutor(
     agent=agent,
