@@ -1,6 +1,7 @@
 import streamlit as st
 import os
 
+from langchain.retrievers.multi_query import MultiQueryRetriever
 from langchain.callbacks.base import BaseCallbackHandler
 from langchain.document_loaders import RecursiveUrlLoader
 from langchain.document_transformers import Html2TextTransformer
@@ -59,7 +60,7 @@ st.markdown('*- Give me examples of real-world impact for grantees in climate ro
 st.markdown('*- I am interested in knowing about grantees working in developer education.*')
 st.markdown('*- ELI5 few projects in token engineering round to me.*')
 st.markdown('*- Tell me about projects building tooling for governance.*')
-st.markdown('*- What projects are doing cutting-edge work on decentralized identity?')
+st.markdown('*- What projects are doing cutting-edge work on decentralized identity?*')
 #st.info('Development status: Ready for Climate Round. Other rounds coming soon!')
 col1, col2, col3 = st.columns([1,1,1])
 with col1:
@@ -79,6 +80,13 @@ def configure_retriever_rounds():
     vectorstore = FAISS.load_local(index, embeddings,allow_dangerous_deserialization= True )
     return vectorstore.as_retriever()
 
+def configure_multi_query_retriever():
+    grantee_retriever = configure_retriever_grantees()
+    round_retriever = configure_retriever_rounds()
+    
+    # Initialize the MultiQueryRetriever with the individual retrievers
+    multi_query_retriever = MultiQueryRetriever([grantee_retriever, round_retriever])
+    return multi_query_retriever
 
 grantee_info = create_retriever_tool(
     configure_retriever_grantees(),
@@ -92,8 +100,11 @@ round_info = create_retriever_tool(
     "Use this tool to answer questions related to GG20 and rounds.  If the answer is not available in the given context information, respond: Sorry! I don't have an answer for this."
 )
 
+multi_query_retriever = configure_multi_query_retriever()
+
 #tools = [grantee_info, round_info]
-tools = [grantee_info]
+#tools = [grantee_info]
+tools = [multi_query_retriever]
 
 llm = ChatOpenAI(temperature=0, streaming=True, model="gpt-4-turbo")
 #memory = AgentTokenBufferMemory(llm=llm)
@@ -116,7 +127,7 @@ agent_executor = AgentExecutor(
     agent=agent,
     tools=tools,
     verbose=False,
-    return_intermediate_steps=True,
+    #return_intermediate_steps=True,
 )
 
 starter_message =   "Ask me anything about the grantees in GG20 Rounds!"
