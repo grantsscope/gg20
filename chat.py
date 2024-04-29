@@ -80,14 +80,6 @@ def configure_retriever_rounds():
     vectorstore = FAISS.load_local(index, embeddings,allow_dangerous_deserialization= True )
     return vectorstore.as_retriever()
 
-def configure_multi_query_retriever():
-    grantee_retriever = configure_retriever_grantees()
-    round_retriever = configure_retriever_rounds()
-    
-    # Initialize the MultiQueryRetriever with the individual retrievers
-    multi_query_retriever = MultiQueryRetriever([grantee_retriever, round_retriever])
-    return multi_query_retriever
-
 grantee_info = create_retriever_tool(
     configure_retriever_grantees(),
     "Grantee_Discovery",
@@ -100,11 +92,8 @@ round_info = create_retriever_tool(
     "Use this tool to answer questions related to GG20 and rounds.  If the answer is not available in the given context information, respond: Sorry! I don't have an answer for this."
 )
 
-multi_query_retriever = configure_multi_query_retriever()
-
 #tools = [grantee_info, round_info]
-#tools = [grantee_info]
-tools = [multi_query_retriever]
+tools = [grantee_info]
 
 llm = ChatOpenAI(temperature=0, streaming=True, model="gpt-4-turbo")
 #memory = AgentTokenBufferMemory(llm=llm)
