@@ -25,9 +25,9 @@ from trubrics.integrations.streamlit import FeedbackCollector
 os.environ['OPENAI_API_KEY'] = st.secrets["OPENAI_API_KEY"]
 
 collector = FeedbackCollector(
-    project="default",
-    email="rohitmalekar@gmail.com",
-    password="aeiour00",
+    project="GG20",
+    email=st.secrets["TRUBRICS_EMAIL"],
+    password=st.secrets["TRUBRICS_PWD"],
 )
 
 st.set_page_config(
@@ -173,7 +173,7 @@ if prompt := st.chat_input(placeholder=starter_message):
             run_id = response["__run"].run_id
 
             st.session_state.logged_prompt = collector.log_prompt(
-                config_model={"model": "gpt-3.5-turbo-16k"},
+                config_model={"model": "gpt-4-turbo"},
                 prompt=prompt,
                 generation=response["output"],
             )
@@ -183,3 +183,12 @@ if prompt := st.chat_input(placeholder=starter_message):
             st.markdown("The dude who made me doesn't have access to models with longer context yet, or, in English, my brain exploded trying to compress all the information needed to answer your question.")
             st.markdown("Please refresh the browser and try asking this a little differently. I will try to remain sane!")
             st.markdown("![Exploding brain meme](https://media.tenor.com/InOgyW0EIEcAAAAC/exploding-brain-mind-blown.gif)")
+
+if st.session_state.logged_prompt:
+    user_feedback = collector.st_feedback(
+        component="feedback",
+        feedback_type="thumbs",
+        open_feedback_label="[Optional] Provide additional feedback",
+        model="gpt-4-turbo",
+        prompt_id=st.session_state.logged_prompt.id,
+    )
