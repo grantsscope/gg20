@@ -98,7 +98,7 @@ llm = ChatOpenAI(temperature=0, streaming=True, model="gpt-4-turbo")
 
 message = SystemMessage(
     content=(
-        "Do not use any external information to respond. \
+        "If the answer is not available in the context information, do not respond from external sources. \
         When sharing information about a project, share which round they are part of (use round name and not round number), the website and the Explorer Link."
     )
 )
