@@ -54,7 +54,7 @@ st.sidebar.markdown("- About [GrantsScope](http://grantsscope.xyz/)")
 
 st.title('GrantsScope - GG20')
 st.markdown('Ask away your questions to learn more about the grantees in GG20. Here are a few sample questions to start your discovery:')
-st.markdown('Tell me about projects critical for Ethereum's infrastructure.')
+st.markdown('Tell me about projects critical for Ethereum\'s infrastructure.')
 st.markdown('*- Give me examples of real-world impact for grantees in climate round.*')
 st.markdown('*- I am interested in knowing about grantees working in developer education.*')
 st.markdown('*- ELI5 few projects in token engineering round to me.*')
