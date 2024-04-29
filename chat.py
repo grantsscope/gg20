@@ -98,10 +98,8 @@ llm = ChatOpenAI(temperature=0, streaming=True, model="gpt-4-turbo")
 
 message = SystemMessage(
     content=(
-        "Only use the context provided to respond to the question. Do not use information outside the context. Do not use any external information to respond."
-        "Do not use round number in your response, only use round name"
-        "If the answer is not available in the context information given above, respond: Sorry! I don't have an answer for this."
-        "Given this information, please answer the following question. When sharing information about a project, share which round they are part of, the website and the Explorer Link."
+        "Do not use any external information to respond."
+        When sharing information about a project, share which round they are part of (use round name and not round number), the website and the Explorer Link."
     )
 )
 
