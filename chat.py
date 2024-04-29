@@ -90,7 +90,8 @@ round_info = create_retriever_tool(
     "Use this tool to answer questions related to GG20 and rounds. Do not use this for project or grantee level questions. Do not use any external information to respond.",
 )
 
-tools = [grantee_info, round_info]
+#tools = [grantee_info, round_info]
+tools = [grantee_info]
 
 llm = ChatOpenAI(temperature=0, streaming=True, model="gpt-4-turbo")
 #memory = AgentTokenBufferMemory(llm=llm)
@@ -155,15 +156,15 @@ if prompt := st.chat_input(placeholder=starter_message):
         #    st.markdown(msg)    
         #st.markdown("***")
 
-        st_callback = StreamlitCallbackHandler(st.container())
-        #stream_handler = StreamHandler(st.empty())
+        #st_callback = StreamlitCallbackHandler(st.container())
+        stream_handler = StreamHandler(st.empty())
         
         try:
             response = agent_executor(
                 #{"input": prompt},
                 {"input": prompt, "history": latest_messages},
-                callbacks=[st_callback],
-                #callbacks=[stream_handler],
+                #callbacks=[st_callback],
+                callbacks=[stream_handler],
                 include_run_info=True,
             )
 
