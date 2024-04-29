@@ -68,13 +68,13 @@ with col1:
 def configure_retriever_grantees():
     index = './storage/csv_index'
     embeddings = OpenAIEmbeddings()    
-    vectorstore = FAISS.load_local(csv_index, embeddings,allow_dangerous_deserialization= True )
+    vectorstore = FAISS.load_local(index, embeddings,allow_dangerous_deserialization= True )
     return vectorstore.as_retriever()
 
 def configure_retriever_rounds():
     index = './storage/txt_index'
     embeddings = OpenAIEmbeddings()    
-    vectorstore = FAISS.load_local(txt_index, embeddings,allow_dangerous_deserialization= True )
+    vectorstore = FAISS.load_local(index, embeddings,allow_dangerous_deserialization= True )
     return vectorstore.as_retriever()
 
 
