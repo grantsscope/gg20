@@ -81,13 +81,13 @@ def configure_retriever_rounds():
 grantee_info = create_retriever_tool(
     configure_retriever_grantees(),
     "Grantee_Discovery",
-    "Use this tool to answer questions related to projects and grantees based on round they are participating in. Do not use any external information to respond.",
+    "Use this tool to answer questions related to projects and grantees based on round they are participating in. If the answer is not available in the context information, do not respond from external sources.",
 )
 
 round_info = create_retriever_tool(
     configure_retriever_rounds(),
     "GG20_Rounds",
-    "Use this tool to answer questions related to GG20 and rounds. Do not use this for project or grantee level questions. Do not use any external information to respond.",
+    "Use this tool to answer questions related to GG20 and rounds.  If the answer is not available in the context information, do not respond from external sources.",
 )
 
 #tools = [grantee_info, round_info]
