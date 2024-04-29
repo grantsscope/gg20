@@ -55,12 +55,11 @@ st.sidebar.markdown("- About [GrantsScope](http://grantsscope.xyz/)")
 
 st.title('GrantsScope - GG20')
 st.markdown('Ask away your questions to learn more about the grantees in GG20. Here are a few sample questions to start your discovery:')
-st.markdown('*- Tell me about projects critical for Ethereum\'s  \n\
-infrastructure.*')
-st.markdown('*- Give me examples of real-world impact for grantees in climate round.*')
-st.markdown('*- ELI5 few projects in token engineering round to me.*')
-st.markdown('*- Tell me about projects building tooling for governance.*')
-st.markdown('*- What projects are doing cutting-edge work on decentralized identity?*')
+st.markdown('*- Tell me about projects critical for Ethereum\'s infrastructure.*  \n\
+*- Give me examples of real-world impact for grantees in climate round.*  \n\
+*- ELI5 few projects in token engineering round to me.*  \n\
+*- Tell me about projects building tooling for governance.*  \n\
+*- What projects are doing cutting-edge work on decentralized identity?*')
 st.markdown('Jump to OSS round: [Hackathon Alumni](https://explorer.gitcoin.co/#/round/42161/23) | \
             [dApps & Apps](https://explorer.gitcoin.co/#/round/42161/25) | \
             [Developer Tooling & Libraries](https://explorer.gitcoin.co/#/round/42161/27) | \
