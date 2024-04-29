@@ -65,19 +65,32 @@ with col1:
     
 @st.cache_resource(ttl="1h")
 
-def configure_retriever():
-    index = './storage/faiss_index'
+def configure_retriever_grantees():
+    index = './storage/csv_index'
     embeddings = OpenAIEmbeddings()    
-    vectorstore = FAISS.load_local(index, embeddings,allow_dangerous_deserialization= True )
+    vectorstore = FAISS.load_local(csv_index, embeddings,allow_dangerous_deserialization= True )
     return vectorstore.as_retriever()
 
-discoverer = create_retriever_tool(
-    configure_retriever(),
+def configure_retriever_rounds():
+    index = './storage/txt_index'
+    embeddings = OpenAIEmbeddings()    
+    vectorstore = FAISS.load_local(txt_index, embeddings,allow_dangerous_deserialization= True )
+    return vectorstore.as_retriever()
+
+
+grantee_info = create_retriever_tool(
+    configure_retriever_grantees(),
     "Grantee_Discovery",
-    "Use this tool for answer all questions. Do not use any external information to respond.",
+    "Use this tool to answer questions related to projects and grantees. Do not use any external information to respond.",
 )
 
-tools = [discoverer]
+round_info = create_retriever_tool(
+    configure_retriever_rounds(),
+    "GG20_Rounds",
+    "Use this tool to answer questions related GG20 and related rounds. Do not use any external information to respond.",
+)
+
+tools = [grantee_info, round_info]
 
 llm = ChatOpenAI(temperature=0, streaming=True, model="gpt-4-turbo")
 #memory = AgentTokenBufferMemory(llm=llm)
