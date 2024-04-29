@@ -54,10 +54,12 @@ st.sidebar.markdown("- About [GrantsScope](http://grantsscope.xyz/)")
 
 st.title('GrantsScope - GG20')
 st.markdown('Ask away your questions to learn more about the grantees in GG20. Here are a few sample questions to start your discovery:')
+st.markdown('Tell me about projects critical for Ethereum's infrastructure.')
 st.markdown('*- Give me examples of real-world impact for grantees in climate round.*')
 st.markdown('*- I am interested in knowing about grantees working in developer education.*')
 st.markdown('*- ELI5 few projects in token engineering round to me.*')
 st.markdown('*- Tell me about projects building tooling for governance.*')
+st.markdown('*- What projects are doing cutting-edge work on decentralized identity?')
 #st.info('Development status: Ready for Climate Round. Other rounds coming soon!')
 col1, col2, col3 = st.columns([1,1,1])
 with col1:
