@@ -64,6 +64,11 @@ st.markdown('Jump to OSS round: [Hackathon Alumni](https://explorer.gitcoin.co/#
             [dApps & Apps](https://explorer.gitcoin.co/#/round/42161/25) | \
             [Developer Tooling & Libraries](https://explorer.gitcoin.co/#/round/42161/27) | \
             [Web3 infrastructure](https://explorer.gitcoin.co/#/round/42161/26)')
+st.markdown('Jump to Community round: [ENS](https://explorer.gitcoin.co/#/round/42161/24) |\
+            [Climate Solutions](https://explorer.gitcoin.co/#/round/42161/29) |\
+            [Open Civics](https://explorer.gitcoin.co/#/round/42161/31) |\
+            [Hypercerts Ecosystem](https://explorer.gitcoin.co/#/round/42161/28) |\
+            [Token Engineering Commons](https://explorer.gitcoin.co/#/round/10/9)')
 #st.info('Development status: Ready for Climate Round. Other rounds coming soon!')
 col1, col2, col3 = st.columns([1,1,1])
 with col1:
