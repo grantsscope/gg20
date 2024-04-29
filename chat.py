@@ -116,7 +116,7 @@ agent_executor = AgentExecutor(
     agent=agent,
     tools=tools,
     verbose=False,
-    #return_intermediate_steps=True,
+    return_intermediate_steps=True,
 )
 
 starter_message =   "Ask me anything about the grantees in GG20 Rounds!"
