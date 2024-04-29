@@ -7,3 +7,4 @@ tiktoken
 trubrics
 streamlit_feedback
 markdown
+langchain-community
