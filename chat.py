@@ -61,6 +61,10 @@ st.markdown('*- I am interested in knowing about grantees working in developer e
 st.markdown('*- ELI5 few projects in token engineering round to me.*')
 st.markdown('*- Tell me about projects building tooling for governance.*')
 st.markdown('*- What projects are doing cutting-edge work on decentralized identity?*')
+st.markdown('Jump to OSS round: [Hackathon Alumni](https://explorer.gitcoin.co/#/round/42161/23) | \
+            [dApps & Apps](https://explorer.gitcoin.co/#/round/42161/25) | \
+            [Developer Tooling & Libraries](https://explorer.gitcoin.co/#/round/42161/27) | \
+            [Web3 infrastructure](https://explorer.gitcoin.co/#/round/42161/26)')
 #st.info('Development status: Ready for Climate Round. Other rounds coming soon!')
 col1, col2, col3 = st.columns([1,1,1])
 with col1:
