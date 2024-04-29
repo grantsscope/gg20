@@ -154,15 +154,15 @@ if prompt := st.chat_input(placeholder=starter_message):
         #    st.markdown(msg)    
         #st.markdown("***")
 
-        st_callback = StreamlitCallbackHandler(st.container())
-        #stream_handler = StreamHandler(st.empty())
+        #st_callback = StreamlitCallbackHandler(st.container())
+        stream_handler = StreamHandler(st.empty())
         
         try:
             response = agent_executor(
                 #{"input": prompt},
                 {"input": prompt, "history": latest_messages},
-                callbacks=[st_callback],
-                #callbacks=[stream_handler],
+                #callbacks=[st_callback],
+                callbacks=[stream_handler],
                 include_run_info=True,
             )
 
