@@ -58,7 +58,7 @@ st.markdown('*- Give me examples of real-world impact for grantees in climate ro
 st.markdown('*- I am interested in knowing about grantees working in <add a category you are interested in>.*')
 st.markdown('*- ELI5 the project <project name> to me.*')
 st.markdown('*- Why should I donate to <add a project name>?*')
-st.info('Development status: Ready for Climate Round. Other rounds coming soon!')
+#st.info('Development status: Ready for Climate Round. Other rounds coming soon!')
 col1, col2, col3 = st.columns([1,1,1])
 with col1:
     st.link_button("Support GrantsScope in GG20", "https://explorer.gitcoin.co/#/round/42161/25/149",type="primary")
