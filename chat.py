@@ -34,7 +34,7 @@ st.set_page_config(
     page_title="GrantsScope",
     page_icon="🔎",
     layout="wide",
-    #initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed",
 )
 
 class StreamHandler(BaseCallbackHandler):
@@ -55,9 +55,9 @@ st.sidebar.markdown("- About [GrantsScope](http://grantsscope.xyz/)")
 st.title('GrantsScope - GG20')
 st.markdown('Ask away your questions to learn more about the grantees in GG20. Here are a few sample questions to start your discovery:')
 st.markdown('*- Give me examples of real-world impact for grantees in climate round.*')
-st.markdown('*- I am interested in knowing about grantees working in <add a category you are interested in>.*')
-st.markdown('*- ELI5 the project <project name> to me.*')
-st.markdown('*- Why should I donate to <add a project name>?*')
+st.markdown('*- I am interested in knowing about grantees working in developer education.*')
+st.markdown('*- ELI5 few projects in token engineering round to me.*')
+st.markdown('*- I am new to OSS. What questions should I ask?*')
 #st.info('Development status: Ready for Climate Round. Other rounds coming soon!')
 col1, col2, col3 = st.columns([1,1,1])
 with col1:
@@ -81,13 +81,13 @@ def configure_retriever_rounds():
 grantee_info = create_retriever_tool(
     configure_retriever_grantees(),
     "Grantee_Discovery",
-    "Use this tool to answer questions related to projects and grantees based on round they are participating in. If the answer is not available in the context information, respond as unable to find an answer."
+    "Use this tool to answer questions related to projects and grantees based on round they are participating in. If the answer is not available in the given context information, respond: Sorry! I don't have an answer for this."
 )
 
 round_info = create_retriever_tool(
     configure_retriever_rounds(),
     "GG20_Rounds",
-    "Use this tool to answer questions related to GG20 and rounds.  If the answer is not available in the context information, respond as unable to find an answer."
+    "Use this tool to answer questions related to GG20 and rounds.  If the answer is not available in the given context information, respond: Sorry! I don't have an answer for this."
 )
 
 #tools = [grantee_info, round_info]
@@ -98,7 +98,7 @@ llm = ChatOpenAI(temperature=0, streaming=True, model="gpt-4-turbo")
 
 message = SystemMessage(
     content=(
-        "If the answer is not available in the context information, respond as unable to find an answer. \
+        "If the answer is not available in the given context information, respond: Sorry! I don't have an answer for this. \
         When sharing information about a project, share which round they are part of (use round name and not round number), the website and the Explorer Link."
     )
 )
