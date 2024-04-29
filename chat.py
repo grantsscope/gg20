@@ -81,13 +81,13 @@ def configure_retriever_rounds():
 grantee_info = create_retriever_tool(
     configure_retriever_grantees(),
     "Grantee_Discovery",
-    "Use this tool to answer questions related to projects and grantees. Do not use any external information to respond.",
+    "Use this tool to answer questions related to projects and grantees based on round they are participating in. Do not use any external information to respond.",
 )
 
 round_info = create_retriever_tool(
     configure_retriever_rounds(),
     "GG20_Rounds",
-    "Use this tool to answer questions related GG20 and related rounds. Do not use any external information to respond.",
+    "Use this tool to answer questions related to GG20 and rounds. Do not use this for project or grantee level questions. Do not use any external information to respond.",
 )
 
 tools = [grantee_info, round_info]
@@ -155,15 +155,15 @@ if prompt := st.chat_input(placeholder=starter_message):
         #    st.markdown(msg)    
         #st.markdown("***")
 
-        #st_callback = StreamlitCallbackHandler(st.container())
-        stream_handler = StreamHandler(st.empty())
+        st_callback = StreamlitCallbackHandler(st.container())
+        #stream_handler = StreamHandler(st.empty())
         
         try:
             response = agent_executor(
                 #{"input": prompt},
                 {"input": prompt, "history": latest_messages},
-                #callbacks=[st_callback],
-                callbacks=[stream_handler],
+                callbacks=[st_callback],
+                #callbacks=[stream_handler],
                 include_run_info=True,
             )
 
