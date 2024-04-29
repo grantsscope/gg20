@@ -57,7 +57,7 @@ st.markdown('Ask away your questions to learn more about the grantees in GG20. H
 st.markdown('*- Give me examples of real-world impact for grantees in climate round.*')
 st.markdown('*- I am interested in knowing about grantees working in developer education.*')
 st.markdown('*- ELI5 few projects in token engineering round to me.*')
-st.markdown('*- I am new to OSS. What questions should I ask?*')
+st.markdown('*- Tell me about projects building tooling for governance.*')
 #st.info('Development status: Ready for Climate Round. Other rounds coming soon!')
 col1, col2, col3 = st.columns([1,1,1])
 with col1:
